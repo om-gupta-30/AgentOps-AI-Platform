@@ -1,6 +1,3 @@
-# Exclude frontend from Python serverless function
-frontend/
-
 # Exclude dev/test files
 *.md
 *.txt
