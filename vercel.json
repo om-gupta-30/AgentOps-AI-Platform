@@ -3,11 +3,6 @@
   "outputDirectory": "frontend/.next",
   "framework": "nextjs",
   "installCommand": "cd frontend && npm install",
-  "functions": {
-    "api/index.py": {
-      "runtime": "@vercel/python"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/:path*",
