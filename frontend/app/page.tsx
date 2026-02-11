@@ -64,7 +64,7 @@ export default function Home() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch('http://localhost:8000/history')
+        const response = await fetch('/api/history')
         if (response.ok) {
           const data: HistoryResponse = await response.json()
           setHistory(data.memories)
@@ -123,7 +123,7 @@ export default function Home() {
       // Using fetch with ReadableStream to receive Server-Sent Events (SSE)
       // Backend sends events in this format: "data: {json}\n\n"
       
-      const response = await fetch('http://localhost:8000/run?stream=true', {
+      const response = await fetch('/api/run?stream=true', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ export default function Home() {
                 if (event.evaluation.passed && event.evaluation.score >= 8) {
                   setTimeout(async () => {
                     try {
-                      const historyResponse = await fetch('http://localhost:8000/history')
+                      const historyResponse = await fetch('/api/history')
                       if (historyResponse.ok) {
                         const historyData: HistoryResponse = await historyResponse.json()
                         setHistory(historyData.memories)
@@ -250,7 +250,7 @@ export default function Home() {
       // 2. Streaming failed and we're falling back
       // 3. Browser doesn't support ReadableStream
       
-      const response = await fetch('http://localhost:8000/run', {
+      const response = await fetch('/api/run', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -289,7 +289,7 @@ export default function Home() {
       if (apiResponse.evaluation.passed && apiResponse.evaluation.score >= 8) {
         setTimeout(async () => {
           try {
-            const historyResponse = await fetch('http://localhost:8000/history')
+            const historyResponse = await fetch('/api/history')
             if (historyResponse.ok) {
               const historyData: HistoryResponse = await historyResponse.json()
               setHistory(historyData.memories)

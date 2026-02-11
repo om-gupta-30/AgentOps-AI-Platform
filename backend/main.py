@@ -80,13 +80,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",  # React dev server
-        "http://localhost:5173",  # Vite dev server
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173",
-        # TODO: Add production frontend URLs here
-    ],
+    allow_origins=["*"],  # Allow all origins for now (same-origin requests from Vercel)
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
@@ -160,6 +154,12 @@ async def root():
 
 from backend.routers import run, history
 
+# Include routers with /api prefix for Vercel deployment
+# Frontend calls /api/run, /api/history, etc.
+app.include_router(run.router, prefix="/api", tags=["Run"])
+app.include_router(history.router, prefix="/api", tags=["History"])
+
+# Also include without prefix for local development (localhost:8000/run)
 app.include_router(run.router, tags=["Run"])
 app.include_router(history.router, tags=["History"])
 
