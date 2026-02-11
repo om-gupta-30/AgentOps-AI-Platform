@@ -1,0 +1,28 @@
+# Vercel Serverless Function Dependencies (Lightweight)
+# This is a slimmed-down version for Vercel's 250MB limit
+# The full requirements.txt at project root has additional deps for local dev
+
+# Core Framework
+fastapi>=0.109.0
+pydantic>=2.5.0
+
+# LangChain & LangGraph (core only, no heavy extras)
+langchain-core>=0.1.0
+langchain-google-genai>=1.0.0
+langgraph>=0.0.28
+
+# Environment & Configuration
+python-dotenv>=1.0.0
+
+# HTTP Client (for external APIs)
+httpx>=0.26.0
+
+# Tools (for web search)
+duckduckgo-search>=4.0.0
+
+# Note: The following are EXCLUDED to stay under 250MB:
+# - chromadb (pulls in PyTorch/ML libs - ~400MB+)
+# - langsmith (optional observability)
+# - langfuse (optional observability)
+# - uvicorn (not needed for serverless)
+# - langchain (full package - use langchain-core instead)

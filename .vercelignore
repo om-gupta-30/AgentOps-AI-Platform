@@ -1,0 +1,25 @@
+# Exclude frontend from Python serverless function
+frontend/
+
+# Exclude dev/test files
+*.md
+*.txt
+!requirements.txt
+!api/requirements.txt
+
+# Exclude local data
+memory/chroma_db/
+memory/memory.json
+
+# Exclude local env
+.env
+.env.local
+
+# Exclude git
+.git/
+.gitignore
+
+# Exclude cache
+__pycache__/
+*.pyc
+.pytest_cache/
