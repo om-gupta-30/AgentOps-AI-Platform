@@ -34,8 +34,8 @@ export default function AgentInput({
       return
     }
 
-    if (goal.trim().length < 10) {
-      alert('Goal must be at least 10 characters')
+    if (goal.trim().length < 3) {
+      alert('Goal must be at least 3 characters')
       return
     }
 
@@ -94,7 +94,7 @@ export default function AgentInput({
           <span className="text-muted">
             {goal.length}/500 characters
           </span>
-          {goal.length >= 10 && goal.length <= 500 && (
+          {goal.length >= 3 && goal.length <= 500 && (
             <span className="text-muted" style={{ color: '#10b981' }}>
               ✓ Valid length
             </span>
@@ -142,7 +142,7 @@ export default function AgentInput({
         <button
           type="submit"
           className="primary"
-          disabled={loading || goal.trim().length < 10}
+          disabled={loading || goal.trim().length < 3}
           style={{ flex: 1 }}
         >
           {loading ? (

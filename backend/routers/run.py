@@ -56,9 +56,9 @@ class RunRequest(BaseModel):
 
     goal: str = Field(
         ...,
-        min_length=10,
+        min_length=3,
         max_length=500,
-        description="The task to execute (10-500 characters)",
+        description="The task to execute (3-500 characters)",
         examples=["Explain the benefits of vector databases for semantic search"],
     )
 
